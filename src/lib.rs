@@ -187,6 +187,8 @@ use std::pin::Pin;
 mod execute;
 use crate::execute::execute_deep_scrape;
 pub mod limiter;
+use async_std::channel::{Receiver, Sender, self};
+use futures::channel::mpsc::channel;
 use limiter::Limiter;
 
 #[macro_use]
@@ -199,7 +201,6 @@ use crate::scrape::{ResponseLogic::Parallel, StartUrl, Scrape, ElementUrlExtract
 use futures::stream::{self, StreamExt, TryStreamExt, Iter as StreamIter};
 use futures::{ready, Stream};
 // use futures::channel::mpsc::channel;
-use async_std::sync::{channel, Receiver, Sender};
 use async_std::task::{Context, Poll, sleep};
 
 use futures::future::{join, BoxFuture};
@@ -471,7 +472,7 @@ impl<'a> QuickCrawler<'a>
         
         // let stream = &self.start_urls;
         // let count = Arc::new(Mutex::new(0usize));
-        let (data_to_manager_sender, data_to_manager_receiver) = channel::<DataFromScraperValue>(100);
+        let (data_to_manager_sender, data_to_manager_receiver) = channel::bounded::<DataFromScraperValue>(100);
 
         let limiter = self.limiter;
         let request_handler = self.request_handler;

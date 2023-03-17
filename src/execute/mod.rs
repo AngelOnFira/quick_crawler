@@ -1,5 +1,6 @@
 // use futures::stream::{self, StreamExt};
 use std::mem::replace;
+use async_std::channel::Sender;
 use scraper::{Selector};
 
 use std::sync::{Arc};
@@ -24,7 +25,6 @@ use futures::future::{join};
 use async_std::{task};
 extern crate scraper;
 use scraper::{Html};
-use async_std::sync::{Sender};
 
 
 use crate::scrape::{StartUrl, ResponseLogic::{self, Parallel}, ElementUrlExtractor, ElementDataExtractor,  Ops::{self, *}};
