@@ -525,7 +525,7 @@ mod tests {
     use super::*;
     use async_std::{task};
 
-    use mockito::{mock, server_address, Matcher};
+    use mockito::{mock, server_address, Matcher, Server};
     // #[test]
     // fn with_start_urls() {
     //     let mut builder = QuickCrawlerBuilder::new();

@@ -1,10 +1,10 @@
 use dashmap::DashMap;
 use futures::prelude::*;
 use futures::future::{join_all};
+use ratelimit_futures::Ratelimit;
 use std::time::{Instant};
 
-use ratelimit_meter::{DirectRateLimiter, LeakyBucket};
-use ratelimit_futures::Ratelimit;
+use ratelimit_meter::{LeakyBucket, DirectRateLimiter};
 use std::num::NonZeroU32;
 use futures::{
   compat::{Future01CompatExt, Stream01CompatExt},
