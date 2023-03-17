@@ -2,7 +2,7 @@
 name = "quick_crawler"
 version = "0.1.2"
 authors = ["Michael Khirallah <mike.mkrallaproductions@gmail.com>"]
-edition = "2018"
+edition = "2021"
 
 license = "Apache-2.0/MIT"
 repository = "https://github.com/mkralla11/quick_crawler"
